@@ -1,8 +1,7 @@
 {
   "name": "clientkit-watcher",
   "version": "0.0.1",
-  "description": "Clientkit task that watches project files and reprocesses them on change",
-  "main": "eslint.js",
+  "description": "Continuously watches your clientkit project files and re-runs a task when they are changed",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/firstandthird/clientkit-watcher.git"
