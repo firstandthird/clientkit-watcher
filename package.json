@@ -1,0 +1,29 @@
+{
+  "name": "clientkit-watcher",
+  "version": "0.0.1",
+  "description": "Clientkit task that watches project files and reprocesses them on change",
+  "main": "eslint.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/firstandthird/clientkit-watcher.git"
+  },
+  "author": "First+Third",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/firstandthird/clientkit-watcher/issues"
+  },
+  "homepage": "https://github.com/firstandthird/clientkit-watcher#readme",
+  "devDependencies": {
+    "eslint": "^3.9.1",
+    "eslint-config-firstandthird": "^3.0.2",
+    "eslint-plugin-import": "^2.1.0"
+  },
+  "dependencies": {
+    "chokidar": "1.6.0",
+    "lodash.debounce": "4.0.8",
+    "clientkit-task": "0.0.7"
+  },
+  "eslintConfig": {
+    "extends": "firstandthird"
+  }
+}
