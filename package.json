@@ -1,18 +1,18 @@
 {
-  "name": "clientkit-watcher",
+  "name": "runkit-watcher",
   "version": "0.0.3",
-  "description": "Continuously watches your clientkit project files and re-runs a task when they are changed",
+  "description": "Continuously watches your runkit project files and re-runs a task when they are changed",
   "main": "watcher.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/firstandthird/clientkit-watcher.git"
+    "url": "git+https://github.com/firstandthird/runkit-watcher.git"
   },
   "author": "First+Third",
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/firstandthird/clientkit-watcher/issues"
+    "url": "https://github.com/firstandthird/runkit-watcher/issues"
   },
-  "homepage": "https://github.com/firstandthird/clientkit-watcher#readme",
+  "homepage": "https://github.com/firstandthird/runkit-watcher#readme",
   "devDependencies": {
     "eslint": "^3.9.1",
     "eslint-config-firstandthird": "^3.0.2",
@@ -21,7 +21,7 @@
   "dependencies": {
     "chokidar": "1.6.1",
     "lodash.debounce": "4.0.8",
-    "clientkit-task": "0.0.9"
+    "runkit-task": "0.0.10"
   },
   "eslintConfig": {
     "extends": "firstandthird"
