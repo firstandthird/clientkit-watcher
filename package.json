@@ -1,6 +1,6 @@
 {
   "name": "runkit-watcher",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Continuously watches your runkit project files and re-runs a task when they are changed",
   "main": "watcher.js",
   "repository": {
