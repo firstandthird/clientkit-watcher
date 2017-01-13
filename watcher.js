@@ -39,7 +39,7 @@ class WatcherTask extends ClientKitTask {
     });
     this.watcher.on('all', debounce(() => {
       this.log(`Running: ${taskToRun}`);
-      this.runner.run(taskToRun, (err) => {
+      this.kit.runner.run(taskToRun, (err) => {
         if (err) {
           this.log(err);
         }
