@@ -1,6 +1,6 @@
 {
   "name": "clientkit-watcher",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Continuously watches your clientkit project files and re-runs a task when they are changed",
   "main": "watcher.js",
   "repository": {
