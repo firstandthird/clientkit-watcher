@@ -1,11 +1,11 @@
 {
-  "name": "runkit-watcher",
+  "name": "taskkit-watcher",
   "version": "0.0.4",
-  "description": "Continuously watches your runkit project files and re-runs a task when they are changed",
+  "description": "Continuously watches your taskkit project files and re-runs a task when they are changed",
   "main": "watcher.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/firstandthird/runkit-watcher.git"
+    "url": "git+https://github.com/firstandthird/taskkit-watcher.git"
   },
   "scripts": {
     "test": "tape test/**.js | tap-spec"
@@ -13,9 +13,9 @@
   "author": "First+Third",
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/firstandthird/runkit-watcher/issues"
+    "url": "https://github.com/firstandthird/taskkit-watcher/issues"
   },
-  "homepage": "https://github.com/firstandthird/runkit-watcher#readme",
+  "homepage": "https://github.com/firstandthird/taskkit-watcher#readme",
   "devDependencies": {
     "eslint": "^3.9.1",
     "eslint-config-firstandthird": "^3.0.2",
