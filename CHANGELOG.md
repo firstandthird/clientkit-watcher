@@ -1,4 +1,12 @@
 
+0.0.5 / 2017-01-21
+==================
+
+  * renamed to taskkit-watcher
+  * use taskkit-task
+  * unit tests
+  * test
+
 0.0.4 / 2017-01-13
 ==================
 
