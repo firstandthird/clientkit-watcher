@@ -1,14 +1,14 @@
 'use strict';
 
-const RunKitTask = require('runkit-task');
+const TaskKitTask = require('taskkit-task');
 const chokidar = require('chokidar');
 const debounce = require('lodash.debounce');
 const pathLib = require('path');
 
-class WatcherTask extends RunKitTask {
+class WatcherTask extends TaskKitTask {
 
   get description() {
-    return 'This task watches the indicated files for changes, and re-runs the other registered RunKitTasks when an edit is made to them.';
+    return 'This task watches the indicated files for changes, and re-runs the other registered TaskKitTasks when an edit is made to them.';
   }
 
   process(tasks, watch, done) {
