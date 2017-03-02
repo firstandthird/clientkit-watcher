@@ -34,11 +34,8 @@ class WatcherTask extends TaskKitTask {
     });
     if (this.options.debug) {
       watcher.on('ready', () => {
-        // const watchedPaths = watcher.getWatched();
         this.log(['debug'], 'Listing watched paths...');
-        this.watchers.forEach((curWatcher) => {
-          this.log(['debug'], curWatcher.getWatched());
-        });
+        this.log(['debug'], watcher.getWatched());
       });
     }
     watcher.on('error', (error) => {

@@ -1,10 +1,11 @@
+'use strict';
 const test = require('tape');
 const WatcherTask = require('../watcher.js');
 const fs = require('fs');
 const path = require('path');
-/*
+
 test('will watch a dir and call .process when files are changed', (t) => {
-  t.plan(2);
+  t.plan(3);
   const watches = {};
   watches[`${path.join(__dirname, 'watch1', '*.txt')}`] = 'testTask';
   const task = new WatcherTask('watcher', {
@@ -45,16 +46,15 @@ test('will watch a dir and ignore specified files', (t) => {
     fs.writeFile('test/watch1/watch1.txt', Math.random(), () => {});
     setTimeout(() => {
       t.end();
-      process.exit();
     }, 2000);
   }, 1000);
 });
-*/
+
 test('still prints all files when multiple watchers', (t) => {
-  t.plan(2);
   const watches = {};
-  watches[`${path.join(__dirname, 'watch1', '*.js')}`] = 'testTask';
-  watches[`${path.join(__dirname, 'watch1', '*.txt')}`] = 'testTask';
+  watches[path.join(__dirname, 'watch1', '*.js')] = 'testTask';
+  watches[path.join(__dirname, 'watch1', '*.txt')] = 'testTask';
+  watches[path.join(process.cwd(), 'package.json')] = 'testTask';
   const task = new WatcherTask('watcher', {
     files: watches,
     debug: true,
@@ -63,13 +63,21 @@ test('still prints all files when multiple watchers', (t) => {
   }, {
     runner: {
       run: (taskName) => {
-        t.equal(taskName, 'testTask');
       }
     }
   });
+  const allLogs = [];
+  task.log = (tags, data) => {
+    if (data) {
+      allLogs.push(data);
+    }
+  };
   task.execute({}, {});
   setTimeout(() => {
+    t.equal(allLogs[0], 'Listing watched paths...', 'lists first watcher');
+    t.equal(allLogs[2], 'Listing watched paths...', 'lists second watcher');
+    t.equal(allLogs[4], 'Listing watched paths...', 'lists third watcher');
     t.end();
-  //   fs.writeFile('test/watch1/watch1.txt', Math.random(), () => {});
+    process.exit();
   }, 2000);
 });
