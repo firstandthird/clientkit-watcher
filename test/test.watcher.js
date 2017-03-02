@@ -78,7 +78,6 @@ test('still prints all files when multiple watchers', (t) => {
   };
   task.execute({}, {});
   setTimeout(() => {
-    console.log(allLogs)
     t.equal(allLogs[0], 'Listing watched paths for task testTask:', 'lists first watcher');
     t.equal(allLogs[2], 'Listing watched paths for task testTask:', 'lists second watcher');
     t.equal(allLogs[4], 'Listing watched paths for task testTask:', 'lists third watcher');
