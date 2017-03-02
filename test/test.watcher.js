@@ -5,7 +5,6 @@ const fs = require('fs');
 const path = require('path');
 
 test('will watch a dir and call .process when files are changed', (t) => {
-  t.plan(3);
   const watches = {};
   watches[`${path.join(__dirname, 'watch1', '*.txt')}`] = 'testTask';
   const task = new WatcherTask('watcher', {
@@ -23,6 +22,10 @@ test('will watch a dir and call .process when files are changed', (t) => {
   task.execute({}, {});
   setTimeout(() => {
     fs.writeFile('test/watch1/watch1.txt', Math.random(), () => {});
+    setTimeout(() => {
+      task.watchers[0].close();
+      t.end();
+    }, 500);
   }, 1000);
 });
 
@@ -45,6 +48,7 @@ test('will watch a dir and ignore specified files', (t) => {
   setTimeout(() => {
     fs.writeFile('test/watch1/watch1.txt', Math.random(), () => {});
     setTimeout(() => {
+      task.watchers[0].close();
       t.end();
     }, 2000);
   }, 1000);
@@ -74,10 +78,13 @@ test('still prints all files when multiple watchers', (t) => {
   };
   task.execute({}, {});
   setTimeout(() => {
-    t.equal(allLogs[0], 'Listing watched paths...', 'lists first watcher');
-    t.equal(allLogs[2], 'Listing watched paths...', 'lists second watcher');
-    t.equal(allLogs[4], 'Listing watched paths...', 'lists third watcher');
+    console.log(allLogs)
+    t.equal(allLogs[0], 'Listing watched paths for task testTask:', 'lists first watcher');
+    t.equal(allLogs[2], 'Listing watched paths for task testTask:', 'lists second watcher');
+    t.equal(allLogs[4], 'Listing watched paths for task testTask:', 'lists third watcher');
+    task.watchers[0].close();
+    task.watchers[1].close();
+    task.watchers[2].close();
     t.end();
-    process.exit();
   }, 2000);
 });

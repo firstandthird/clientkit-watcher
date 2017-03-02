@@ -34,7 +34,7 @@ class WatcherTask extends TaskKitTask {
     });
     if (this.options.debug) {
       watcher.on('ready', () => {
-        this.log(['debug'], 'Listing watched paths...');
+        this.log(['debug'], `Listing watched paths for task ${taskToRun}:`);
         this.log(['debug'], watcher.getWatched());
       });
     }
