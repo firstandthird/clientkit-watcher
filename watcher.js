@@ -7,6 +7,11 @@ const pathLib = require('path');
 
 class WatcherTask extends TaskKitTask {
 
+  constructor(name, options, kit) {
+    super(name, options, kit);
+    this.watchers = [];
+  }
+
   get description() {
     return 'This task watches the indicated files for changes, and re-runs the other registered TaskKitTasks when an edit is made to them.';
   }
@@ -19,25 +24,24 @@ class WatcherTask extends TaskKitTask {
     const ignoreString = ignoreArr.join('|');
     const ignored = new RegExp(ignoreString);
     this.log(`Watching: ${pathLib.relative(process.cwd(), watch)}, Ignoring: ${ignored}, Task: ${taskToRun}`);
-    this.watcher = chokidar.watch(watch, {
+    const watcher = chokidar.watch(watch, {
       ignored,
       awaitWriteFinish: true
     });
 
-    this.watcher.on('all', (event, path) => {
+    watcher.on('all', (event, path) => {
       this.log(`Changed: ${pathLib.relative(process.cwd(), path)}`);
     });
     if (this.options.debug) {
-      this.watcher.on('ready', () => {
-        const watchedPaths = this.watcher.getWatched();
-        this.log(['debug'], 'Listing watched paths...');
-        this.log(['debug'], watchedPaths);
+      watcher.on('ready', () => {
+        this.log(['debug'], `Listing watched paths for task ${taskToRun}:`);
+        this.log(['debug'], watcher.getWatched());
       });
     }
-    this.watcher.on('error', (error) => {
+    watcher.on('error', (error) => {
       this.log(['error'], error);
     });
-    this.watcher.on('all', debounce(() => {
+    watcher.on('all', debounce(() => {
       this.log(`Running: ${taskToRun}`);
       this.kit.runner.run(taskToRun, (err) => {
         if (err) {
@@ -45,6 +49,7 @@ class WatcherTask extends TaskKitTask {
         }
       });
     }, this.options.delay));
+    this.watchers.push(watcher);
     done();
   }
 
