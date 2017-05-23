@@ -11,7 +11,10 @@ class WatcherTask extends TaskKitTask {
     super(name, options, kit);
     this.watchers = [];
   }
-
+  // returns the module to load when running in a separate process:
+  get classModule() {
+    return path.join(__dirname, 'watcher.js');
+  }
   get description() {
     return 'This task watches the indicated files for changes, and re-runs the other registered TaskKitTasks when an edit is made to them.';
   }
