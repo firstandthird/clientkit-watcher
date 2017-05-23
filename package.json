@@ -1,6 +1,6 @@
 {
   "name": "taskkit-watcher",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "description": "Continuously watches your taskkit project files and re-runs a task when they are changed",
   "main": "watcher.js",
   "repository": {
