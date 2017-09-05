@@ -24,8 +24,8 @@
     "tape": "^4.6.3"
   },
   "dependencies": {
-    "chokidar": "1.6.1",
-    "lodash.debounce": "4.0.8",
+    "chokidar": "^1.7.0",
+    "lodash.debounce": "^4.0.8",
     "taskkit-task": "^1.0.2"
   },
   "eslintConfig": {
