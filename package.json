@@ -17,14 +17,14 @@
   },
   "homepage": "https://github.com/firstandthird/taskkit-watcher#readme",
   "devDependencies": {
-    "eslint": "^3.9.1",
+    "eslint": "^4.6.1",
     "eslint-config-firstandthird": "^3.0.2",
     "eslint-plugin-import": "^2.1.0",
     "tap-spec": "^4.1.1",
     "tape": "^4.6.3"
   },
   "dependencies": {
-    "chokidar": "1.6.1",
+    "chokidar": "1.7.0",
     "lodash.debounce": "4.0.8",
     "taskkit-task": "^1.0.0"
   },
