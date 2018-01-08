@@ -13,10 +13,8 @@ test('will watch a dir and call .process when files are changed', (t) => {
     ignore: 'something',
     delay: 20,
   }, {
-    runner: {
-      run: (taskName) => {
-        t.equal(taskName, 'testTask');
-      }
+    runTask(taskName) {
+      t.equal(taskName, 'testTask');
     }
   });
   task.execute({}, {});
@@ -38,10 +36,8 @@ test('will watch a dir and ignore specified files', (t) => {
     ignore: 'watch1.txt',
     delay: 20,
   }, {
-    runner: {
-      run: (taskName) => {
-        t.equal(false, 'testTask');
-      }
+    runTask(taskName) {
+      t.equal(false, 'testTask');
     }
   });
   task.execute({}, {});
@@ -65,9 +61,7 @@ test('still prints all files when multiple watchers', (t) => {
     ignore: 'something',
     delay: 20,
   }, {
-    runner: {
-      run: (taskName) => {
-      }
+    runTask(taskName) {
     }
   });
   const allLogs = [];

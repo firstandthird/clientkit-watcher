@@ -25,7 +25,7 @@
   "dependencies": {
     "chokidar": "^2.0.0",
     "lodash.debounce": "^4.0.8",
-    "taskkit-task": "^1.0.2"
+    "taskkit-task": "^2.0.3"
   },
   "eslintConfig": {
     "extends": "firstandthird"

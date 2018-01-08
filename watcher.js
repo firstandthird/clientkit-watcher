@@ -14,7 +14,7 @@ class WatcherTask extends TaskKitTask {
     return 'This task watches the indicated files for changes, and re-runs the other registered TaskKitTasks when an edit is made to them.';
   }
 
-  process(tasks, watch, done) {
+  process(tasks, watch) {
     // add together the top-level watcher 'ignore' expressions with this watch's specific 'ignore' expressions:
     const taskToRun = (typeof tasks === 'object' && tasks.task) ? tasks.task : tasks;
     const localIgnore = (typeof tasks === 'object' && tasks.ignore) ? tasks.ignore : [];
@@ -33,7 +33,7 @@ class WatcherTask extends TaskKitTask {
     if (this.options.debug) {
       watcher.on('ready', () => {
         this.log(['debug'], `Listing watched paths for task ${taskToRun}:`);
-        this.log(['debug'], watcher.getWatched());
+        this.log(['debug'], JSON.stringify(watcher.getWatched(), null, 2));
       });
     }
     watcher.on('error', (error) => {
@@ -41,14 +41,9 @@ class WatcherTask extends TaskKitTask {
     });
     watcher.on('all', debounce(() => {
       this.log(`Running: ${taskToRun}`);
-      this.kit.runner.run(taskToRun, (err) => {
-        if (err) {
-          this.log(err);
-        }
-      });
+      this.runTask(taskToRun);
     }, this.options.delay));
     this.watchers.push(watcher);
-    done();
   }
 
   onFinish() {
