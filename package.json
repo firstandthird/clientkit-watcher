@@ -8,7 +8,7 @@
     "url": "git+https://github.com/firstandthird/taskkit-watcher.git"
   },
   "scripts": {
-    "test": "tape test/**.js | tap-spec"
+    "test": "eslint . && tap --cov test"
   },
   "author": "First+Third",
   "license": "UNLICENSED",
@@ -17,14 +17,13 @@
   },
   "homepage": "https://github.com/firstandthird/taskkit-watcher#readme",
   "devDependencies": {
-    "eslint": "^3.9.1",
-    "eslint-config-firstandthird": "^3.0.2",
-    "eslint-plugin-import": "^2.1.0",
-    "tap-spec": "^4.1.1",
-    "tape": "^4.6.3"
+    "eslint": "^4.15.0",
+    "eslint-config-firstandthird": "^4.3.0",
+    "eslint-plugin-import": "^2.8.0",
+    "tap": "^11.0.1"
   },
   "dependencies": {
-    "chokidar": "^1.7.0",
+    "chokidar": "^2.0.0",
     "lodash.debounce": "^4.0.8",
     "taskkit-task": "^1.0.2"
   },

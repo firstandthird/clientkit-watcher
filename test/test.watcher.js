@@ -1,5 +1,5 @@
 'use strict';
-const test = require('tape');
+const test = require('tap').test;
 const WatcherTask = require('../watcher.js');
 const fs = require('fs');
 const path = require('path');
