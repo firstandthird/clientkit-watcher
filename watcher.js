@@ -24,7 +24,8 @@ class WatcherTask extends TaskKitTask {
     this.log(`Watching: ${pathLib.relative(process.cwd(), watch)}, Ignoring: ${ignored}, Task: ${taskToRun}`);
     const watcher = chokidar.watch(watch, {
       ignored,
-      awaitWriteFinish: true
+      awaitWriteFinish: true,
+      ignoreInitial: true
     });
 
     watcher.on('all', (event, path) => {
